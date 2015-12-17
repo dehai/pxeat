@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% set active_page = "history" %}
+{% block body %}
+    <h2>History</h2>
+    {% for ent in history_entries %}
+      <div class="entries">
+          <div class="history_left">
+            <div class="history_title">
+              {{ ent.pxe_title }}
+            </div>
+            <div>
+              <b>Source:</b> <a href="{{ ent.repo_url }}">{{ ent.repo_url }}</a>
+            </div>
+            <div>
+              <div class="col-half history_left">
+                <b>Kernel:</b> <i>{{ ent.repo_kernel }}</i>
+              </div>
+              <div class="col-half history_right">
+                <b>Initrd:</b> <i>{{ ent.repo_initrd }}</i>
+              </div>
+            </div>
+            <div>
+              <b>Install:</b>
+              {% if ent.inst_flag == "def" %}
+                Default
+              {% elif ent.inst_flag == "ssh" %}
+                SSH
+              {% elif ent.inst_flag == "vnc" %}
+                VNC
+              {% endif %}
+            </div>
+            <div>
+              <b>Remark:</b> {{ ent.pxe_comment }}
+            </div>
+          </div>
+          <div class="history_right">
+            {{ ent.unix_time }}
+          </div>
+      </div>
+      <div class="clear"></div>
+      <hr class="divider">
+    {% endfor %}
+    <div class="clear">-</div>
+    <div class="pagination clear">
+      {%- for page in pagination.iter_pages() %}
+        {% if page %}
+          {% if page != pagination.page %}
+            <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+          {% else %}
+            <strong>{{ page }}</strong>
+          {% endif %}
+        {% else %}
+          <span class=ellipsis>…</span>
+        {% endif %}
+      {%- endfor %}
+      {% if pagination.has_next %}
+        <a href="{{ url_for_other_page(pagination.page + 1) }}">Next &raquo;</a>
+      {% endif %}
+    </div>
+{% endblock %}

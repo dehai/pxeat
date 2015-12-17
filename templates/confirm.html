@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+<h4>The entry information you will create</h4>
+<ul>
+    <li>Title: {{ cfm_entries.pxe_title }}</li>
+    <li>Source URL: {{ cfm_entries.repo_url }}</li>
+    <li>Kernel file: {{ cfm_entries.repo_kernel }}</li>
+    <li>Initrd file: {{ cfm_entries.repo_initrd }}</li>
+    <li>Install method:
+        {% if cfm_entries.inst_flag == "def" %}
+            Default
+        {% elif cfm_entries.inst_flag == "ssh" %}
+            SSH
+        {% elif cfm_entries.inst_flag == "vnc" %}
+            VNC
+        {% endif %}
+    </li>
+    <li>Comment: {{ cfm_entries.pxe_comment }}</li>
+</ul>
+<h4>Generated entry</h4>
+<div class="codeblk"><code>
+{% for i in cfm_fmt %}
+{{ i }}<br >
+{% endfor %}
+</code></div>
+    <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+        <input type="submit" value="Confirm & Submit" class="btn">
+      &nbsp;&nbsp;&nbsp;<a href="/">return</a>
+    </form>
+{% endblock %}

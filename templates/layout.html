@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="PXEAT - a management tool for PXE deployment">
+    <meta name="author" content="wnereiz@openSUSE">
+
+    <title>PXEAT</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+{% set navigation_bar = [
+    ('/', 'home', 'Home'),
+    ('/history/', 'history', 'History')
+    ] -%}
+{% set active_page = active_page|default('index') -%}
+<body>
+  <div id="wrapper">
+  <div class="container">
+    <div id="subheader" class="row">
+        <div class="breadcrump">
+            <ul>
+            {% for href, id, caption in navigation_bar %}
+              <li{% if id == active_page %} class="active"{% endif
+                %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+                {% endfor %}
+            <ul>
+        </div>
+    </div>
+    <div class="banner">
+      <div id="title_area">
+        <h1>PXEAT</h1>
+        <h3>Deploy your customized PXE installer!</h3>
+      </div>
+      <div id="sponsorbox">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" />
+      </div>
+    </div>
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="flash {{category}}">{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+  </div>
+  </div>
+</body>
+</html>

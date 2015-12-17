@@ -1,0 +1,240 @@
+/*!
+ * 
+*/
+
+html{}
+body{
+    font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size:14px;
+    line-height:1.42857;
+    color:#333;
+    background-color:#fff
+}
+
+a {
+    color: #439539;
+    text-decoration:none;
+}
+a:hover,
+.active a,
+a:focus {
+    color: #7AC142;
+    text-decoration: underline;
+}
+
+h1,h2,h3{
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+h4{
+    font-size: 16.25px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+#wrapper{
+    min-height:100%;
+    position:relative;
+}
+
+.banner{
+    padding:20px 20px 20px 30px;
+    margin-bottom:30px;
+    border-radius: 6px;
+    background-color:#eee;
+    overflow:hidden;
+}
+.banner p{
+    margin-bottom:15px;
+    font-size:21px;
+    font-weight:200
+}
+.banner h1{
+    font-size: 52px;
+}
+.banner h3{
+    font-size: 21px;
+}
+.banner hr{
+    border-top-color:#d5d5d5
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 800px;
+}
+
+.breadcrump {
+    padding: 5px 15px;
+    margin-bottom: 8px;
+    list-style:none;
+    font-weight: bold;
+    border: 0px none;
+    color: #337AB7;
+}
+.breadcrump ul {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 4px 0px;
+}
+.breadcrump ul li {
+    display: inline;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+.navicon {
+    vertical-align: middle;
+    border: 0px none;
+}
+
+.nav_history {
+    text-align: right;
+}
+.breadcrumb li {
+    display:inline-block
+}
+
+#title_area {
+    width: 70%;
+    float: left;
+}
+#sponsorbox {
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    float: right;
+    width: 25%;
+}
+
+.btn {
+    border-radius: 0.25em;
+    border-width: 0px;
+    border-style: none;
+    border-image: none;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    font-size: 16px;
+    color: #FFF;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+    padding: 0.2em 0.7em;
+    background-color: #76ad2d;
+    background-image: linear-gradient(to bottom, #76AD2D, #439539);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2) inset, 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #439539;
+    *background-color: #439539;
+    /* Buttons in IE7 don't get borders, so darken on hover */
+    background-position: 0 -15px;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+
+select[multiple],
+textarea,
+input[type=text],
+input[type=password],
+input:not([type]) {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #b2b2b2;
+    border-radius: .25em;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 4px 3px 5px;
+    color: #404040;
+    vertical-align: top;
+}
+select[multiple]:focus,
+textarea:focus,
+input:focus {
+    border-color: #42a4e0;
+    -webkit-box-shadow: 0 0 0 2px rgba(73,173,227,0.4);
+    -moz-box-shadow: 0 0 0 2px rgba(73,173,227,0.4);
+    box-shadow: 0 0 0 2px rgba(73,173,227,0.4);
+}
+
+.flash {
+    padding: 5px 10px 5px 10px;
+    border-radius: 6px;
+    color: #FFF;
+    font-size: 16px;
+}
+.error {
+    background-color: #D9534F;
+}
+.green {
+    background-color: #5CB85C;
+}
+
+.codeblk {
+    background-color: #D4DDE4;
+    border:black dashed 1px;
+    padding:6px;
+    margin: 10px 20px;
+}
+.add-entry {
+    padding-top:5px;
+    margin: 0px 20px;
+}
+
+
+# History page
+
+.entries {
+    display: inline-block;
+    margin-top: 20px;
+}
+.history_title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.history_left {
+    display: inline-block;
+    float:left;
+}
+.history_right {
+    display: inline-block;
+    float:right;
+}
+
+.col-half {
+    width: 50%;
+    display: inline-block;
+ }
+
+.clear {
+    clear: both;
+}
+
+hr.divider {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+}

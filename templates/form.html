@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% set active_page = "home" %}
+{% block body %}
+    <form action="{{ url_for('confirm_entry') }}" method="post" class="add-entry">
+      <table>
+        <tr>
+          <td><h4>Title</h4></td>
+          <td><input type="text" size="40" name="pxe_title"></td>
+        </tr>
+        <tr>
+          <td><h4>Repository</h4></td>
+          <td><input type="text" size="60" name="repo_url"  value="http://"></td>
+        </tr>
+        <tr>
+          <td><h4>Kernel File</h4></td>
+          <td><input type="text" size="30" name="repo_kernel" value="{{repo_kernel_default}}"></td>
+        </tr>
+        <tr>
+          <td><h4>Initrd File</h4></td>
+          <td><input type="text" size="30" name="repo_initrd" value="{{repo_initrd_default}}"></td>
+        </tr>
+        <tr>
+          <td><h4>Install method</h4></td>
+          <td>
+            <input type="radio" name="inst_method" value="def" checked> Default
+            <input type="radio" name="inst_method" value="ssh"> SSH
+            <input type="radio" name="inst_method" value="vnc"> VNC
+          </td>
+        </tr>
+        <tr>
+          <td><h4>Comments</h4></td>
+          <td><textarea name="pxe_comment" rows="3" cols="50"></textarea></td>
+        </tr>
+        <tr>
+        <td></td>
+        <td><input type="submit" value="Submit" class="btn"></td>
+        </tr>
+      </dl>
+      <table>
+    </form>
+{% endblock %}
