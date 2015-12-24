@@ -90,10 +90,12 @@ def grab_file(base_url, file_path, saved_file):
 def boot_opts_gen(opt_flag):
     if opt_flag == "vnc":
         return(general_opts['default_boot_opts'] + \
-                         " vnc=1 vncpassword=susetesting")
+                         " vnc=1 vncpassword=" + \
+                         general_opts['vnc_passwd'])
     elif opt_flag == "ssh":
         return(general_opts['default_boot_opts'] + \
-                         " usessh=1 sshpassword=susetesting")
+                         " usessh=1 sshpassword=" + \
+                         general_opts['ssh_passwd'])
     else:
         return(general_opts['default_boot_opts'])
 
@@ -196,8 +198,8 @@ def confirm_entry():
 
     # Show the entry which will be generated on the confirm page
     gen_format = ["menu label ^a - " + items['pxe_title'], \
-              "kernel loader" + items['repo_kernel'], \
-              "append initrd=loader" + items['repo_initrd'] + " " + \
+              "kernel " + general_opts['loader_path'] + "[random]" + postfix_kernelfn, \
+              "append initrd=" + general_opts['loader_path'] + "[random]" + postfix_initrdfn + " " + \
               boot_opts_gen(items['inst_flag']) + " " + \
               "install=" + items['repo_url']]
 
@@ -276,11 +278,11 @@ def add_entry():
 
     pxe_index = 'a'
     for pxe_entry in pxe_entries:
-        fpxe.write('label {0}\n  menu label ^{0} - {1}\n  menu indent 2\n  kernel loader{2}\n  append initrd=loader{3} {4} splash=silent showopts install={5}\n\n'.format(\
+        fpxe.write('label {0}\n  menu label ^{0} - {1}\n  menu indent 2\n  kernel {2}\n  append initrd=loader{3} {4} install={5}\n\n'.format(\
                 pxe_index,\
                 pxe_entry['pxe_title'],\
-                pxe_entry['repo_kernel'],\
-                pxe_entry['repo_initrd'],\
+                general_opts['loader_path'] + items['unix_time'] + items['random_str'] + postfix_kernelfn, \
+                general_opts['loader_path'] + items['unix_time'] + items['random_str'] + postfix_initrdfn, \
                 boot_opts_gen(pxe_entry['inst_flag']),items['repo_url']))
         pxe_index = chr(ord(pxe_index)+1)
 
@@ -322,8 +324,8 @@ if __name__ == '__main__':
                 print("PXE file is not available!\nPlease check the configuration")
                 sys.exit()
 
-            app.debug = True
-            app.run()
+#            app.debug = True
+            app.run(host='0.0.0.0')
         else:
             prt_help()
     else:
