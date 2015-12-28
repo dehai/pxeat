@@ -161,6 +161,11 @@ def history(page):
                             pagination=pagination,\
                             history_entries=history_entries)
 
+@app.route('/about')
+@app.route('/about/')
+def about():
+    return render_template('about.html')
+
 # For the pagination
 def url_for_other_page(page):
     args = request.view_args.copy()
